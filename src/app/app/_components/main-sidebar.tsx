@@ -1,19 +1,20 @@
 'use client'
 
 import {
-  SideBar,
-  SideBarHeader,
-  SideBarMain,
-  SideBarNav,
-  SideBarNavMain,
-  SideBarNavLink,
-  SideBarNavHeader,
-  SideBarNavHeaderTitle,
-  SideBarFooter,
+  DashboardSidebar,
+  DashboardSidebarHeader,
+  DashboardSidebarMain,
+  DashboardSidebarNav,
+  DashboardSidebarNavMain,
+  DashboardSidebarNavLink,
+  DashboardSidebarNavHeader,
+  DashboardSidebarNavHeaderTitle,
+  DashboardSidebarFooter,
 } from '@/components/dashboard/sidebar'
-import { HomeIcon, MixerVerticalIcon } from '@radix-ui/react-icons'
 import { usePathname } from 'next/navigation'
+import { HomeIcon, MixerVerticalIcon } from '@radix-ui/react-icons'
 import { UserDropdown } from './user-dropdown'
+import { Logo } from '@/components/logo'
 import { Session } from 'next-auth'
 
 type MainSidebarProps = {
@@ -28,41 +29,44 @@ export function MainSidebar({ user }: MainSidebarProps) {
   }
 
   return (
-    <SideBar>
-      <SideBarHeader>
-        <h1></h1>
-      </SideBarHeader>
-      <SideBarMain className="flex flex-col flex-grow">
-        <SideBarNav>
-          <SideBarNavMain>
-            <SideBarNavLink href="/app" active={isActive('/app')}>
+    <DashboardSidebar>
+      <DashboardSidebarHeader>
+        <Logo />
+      </DashboardSidebarHeader>
+      <DashboardSidebarMain className="flex flex-col flex-grow">
+        <DashboardSidebarNav>
+          <DashboardSidebarNavMain>
+            <DashboardSidebarNavLink href="/app" active={isActive('/app')}>
               <HomeIcon className="w-3 h-3 mr-3" />
               Tarefas
-            </SideBarNavLink>
-            <SideBarNavLink
+            </DashboardSidebarNavLink>
+            <DashboardSidebarNavLink
               href="/app/settings"
               active={isActive('/app/settings')}
             >
               <MixerVerticalIcon className="w-3 h-3 mr-3" />
               Configurações
-            </SideBarNavLink>
-          </SideBarNavMain>
-        </SideBarNav>
+            </DashboardSidebarNavLink>
+          </DashboardSidebarNavMain>
+        </DashboardSidebarNav>
 
-        <SideBarNav className="mt-auto">
-          <SideBarNavHeader>
-            <SideBarNavHeaderTitle>Links extras</SideBarNavHeaderTitle>
-          </SideBarNavHeader>
-          <SideBarNavMain>
-            <SideBarNavLink href="/">Precisa de ajuda?</SideBarNavLink>
-            <SideBarNavLink href="/">Site</SideBarNavLink>
-          </SideBarNavMain>
-        </SideBarNav>
-      </SideBarMain>
-
-      <SideBarFooter>
+        <DashboardSidebarNav className="mt-auto">
+          <DashboardSidebarNavHeader>
+            <DashboardSidebarNavHeaderTitle>
+              Links extras
+            </DashboardSidebarNavHeaderTitle>
+          </DashboardSidebarNavHeader>
+          <DashboardSidebarNavMain>
+            <DashboardSidebarNavLink href="/">
+              Precisa de ajuda?
+            </DashboardSidebarNavLink>
+            <DashboardSidebarNavLink href="/">Site</DashboardSidebarNavLink>
+          </DashboardSidebarNavMain>
+        </DashboardSidebarNav>
+      </DashboardSidebarMain>
+      <DashboardSidebarFooter>
         <UserDropdown user={user} />
-      </SideBarFooter>
-    </SideBar>
+      </DashboardSidebarFooter>
+    </DashboardSidebar>
   )
 }

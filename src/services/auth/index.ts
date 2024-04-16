@@ -23,7 +23,7 @@ export const {
       from: process.env.EMAIL_FROM,
     }),
   ],
-  secret: process.env.NEXT_PUBLIC_SECRET
+  secret: process.env.NEXT_PUBLIC_SECRET,
 
   // events: {
   //   createUser: async (message) => {
