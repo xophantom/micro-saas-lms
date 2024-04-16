@@ -75,7 +75,11 @@ export function SideBarNavLink({
   return (
     <Link
       href={href}
-      className={cn(['text-sm px-3 py-2', active && 'bg-secondary', className])}
+      className={cn([
+        'flex items-center text-xs px-3 py-2 rounded-md',
+        active && 'bg-secondary',
+        className,
+      ])}
     >
       {children}
     </Link>
